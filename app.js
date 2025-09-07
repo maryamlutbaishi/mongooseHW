@@ -23,8 +23,47 @@ try{
 const addedRecipe=await recipe.create(newRecipe)
 console.log(addedRecipe)
 }
-catch{
+catch(error){
     console.log('error:',error)
 }
 }
 addRecipes()
+
+async function getAllRecipe(){
+
+    const foundRecipe = await recipe.findById("68808ca0cdbe361d0d78239b")
+    console.log(foundRecipe)
+}
+
+getAllRecipe()
+
+
+async function updateRecipe(){
+
+    const updatedRecipe = await recipe.findByIdAndUpdate("68808ca0cdbe361d0d78239b",{
+  name: 'um Ali2'
+},{new:true})
+
+    console.log(updatedRecipe)
+}
+
+
+updateRecipe()
+
+
+
+async function deleteRecipe(){
+    try{
+    const deletedRecipe = await recipe.findByIdAndDelete("68808ca0cdbe361d0d78239b")
+    console.log("Recipe Successfully Deleted")
+    }
+    catch(error){
+        console.log("Error Deleting", error)
+    }
+    
+}
+
+
+
+deleteRecipe()
+
